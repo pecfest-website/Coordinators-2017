@@ -54,11 +54,15 @@ class UserInfo extends Component {
 	}
 
 	componentDidMount() {
-		fetch('http://api.pecfest.in/v1/user/' + this.props.userId)
+		fetch('http://api.pecfest.in/v1/user/' + this.props.userId, { headers: { 'Authorization': 'Basic ' + window.sessionKey }})
 			.then(res => res.json())
 			.then(user => {
-				if (user.ACK == 'SUCCESS')
-					this.setState({ user, message: `${user.college}`})
+				if (user.ACK == 'SUCCESS'){
+					this.setState({ user, message: `${user.college}`+" "+`${user.email}`+" "+`${user.mobile}`});
+					//var str = JSON.stringify(user);
+					//str = JSON.stringify(user, null, 4); // (Optional) beautiful indented output.
+					//console.log(str); // Logs output to dev tools console.
+				}
 				else {
 					this.setState({ message: user.message || 'Failed to load'})
 				}
