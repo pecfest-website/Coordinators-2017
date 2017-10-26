@@ -17,7 +17,7 @@ export default class New extends Component {
       .then(data => data.json())
       .then(res => {
         if (res.ACK == 'SUCCESS') {
-          this.setState({ success: true, status: 'Success' })
+          this.setState({ success: true, status: 'Success', pecfestId: res.pecfestId })
         } else {
           this.setState({ success: false, status: res.message })
         }
@@ -34,21 +34,41 @@ export default class New extends Component {
     this.setState({event, status: 'Submit'});
   }
 
+  renderServerResponse() {
+  	if (!this.state.pecfestId) {
+  		return "";
+  	}
+  	if (this.state.status == 'Success')
+	  return <div className="Success">PECFEST ID: <span className="darker">{this.state.pecfestId}</span></div>;
+	else {
+		return "";
+	}
+  }
+
   render() {
+  	console.log(this.state.event)
     return (
-      <form className="table-row" onSubmit={this.handleSubmit}>
+      <form className="table-row" onSubmit={this.handleSubmit} ref="form">
         {
           this.props.columns.map(column => {
             return (
-              <div className="FormElement table-cell" key={column.key}>
-                <input type={column.key == 'maxSize' || column.key == 'minSize' ? 'number' : "text"} value={this.state.event[column.key]}
+              <div className="FormElement" key={column.key}>
+                <label className="FormLabel" htmlFor={column.key}>{column.name}</label>
+                <input className="FormInput" type={column.key == 'maxSize' || column.key == 'minSize' ? 'number' : "text"}
                   onChange={this.handleChange.bind(this, column.key)}
                   name={column.key} />
+                <br />
               </div>
             )
           })
         }
         <input type="submit" value={this.state.status} disabled={this.state.status != 'Submit'} />
+        <input type="reset" value="Reset" onClick={() => {this.refs.form.reset(); this.setState({ event: {} })}} />
+        <div className="Server-response">
+        	{
+        		this.renderServerResponse()
+        	}
+        </div>
       </form>
     )
   }

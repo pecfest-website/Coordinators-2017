@@ -10,11 +10,13 @@ export default class EditEvent extends Component {
         key: 'pecfestId',
         name: 'PECFEST ID',
         width: 80,
-        editable: true,
+        forShort: true,
+        forSingle: true,
       },
       {
         key: 'name',
         name: 'Name',
+        forName: true,
         editable: true,
       },
       {
@@ -30,6 +32,9 @@ export default class EditEvent extends Component {
       {
         key: 'accomodation',
         name: 'Accomodation',
+        forSwitch: true,
+        switchName: "Accomodation needed",
+        switchValues: [ '0', '1'],
         editable: true,
       },
       {
@@ -53,7 +58,12 @@ export default class EditEvent extends Component {
 
   render() {
     return (
-      <Editor updateUrl={prefix + '/v1/user/update'} createUrl={prefix + '/v1/user/create'} columns={this.getColumns()} getUrl={prefix + '/v1/users'} />
+      <Editor
+        updateUrl={prefix + '/v1/user/update'}
+        createUrl={prefix + '/v1/user/create'}
+        columns={this.getColumns()}
+        getAllUrl={prefix + '/v1/users'}
+        getUrl={prefix + '/v1/user/'} />
     )
   }
 }

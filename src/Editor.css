@@ -1,0 +1,121 @@
+.Flex {
+	display: flex;
+	flex-direction: row;
+	margin: 1em;
+}
+
+.EventsSidebar {
+	flex: 0.3;
+}
+
+.FetchForm, .table-row {
+	flex: 0.7;
+}
+
+.table-row {
+	padding: 1em;
+}
+
+ul {
+	list-style-type: none;
+	text-align: left;
+	overflow: auto;
+	height: 70vh;
+	padding: 0;
+	border-right: 1px solid;
+}
+
+li {
+	cursor: pointer;
+	padding: 10px;
+}
+
+li:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.FormElement {
+	display: flex;
+	margin-bottom: 1em;
+}
+
+.FormLabel {
+	flex: 0.3;
+	text-align: left;
+}
+
+.FormInput {
+	flex: 0.7;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.Form {
+	padding: 1em;
+}
+
+.SearchBox {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+input[type="search"] {
+	width: 100%;
+	padding: 10px;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.col-2 {
+	flex: 2;
+}
+
+.col-5 {
+	flex: 5;
+}
+
+.Registration {
+	text-align: left;
+	padding: 1em;
+	margin: 1em;
+	border: 1px solid lightgray;
+}
+
+.Registration-team {
+	margin-top: 1em;
+}
+
+.SelectedEvent {
+	overflow: auto;
+	height: 80vh;
+}
+
+.Registrations {
+	padding: 1em;
+}
+
+.Switch {
+	display: inline-block;
+	padding: 10px;
+	transition: background-color 300ms;
+	cursor: pointer;
+	color: #aa3203;
+	border-radius: 3px;
+}
+
+.Switch:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Switch:active {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.Switch.selected {
+	background-color: rgba(0, 0, 0, 0.3);
+}

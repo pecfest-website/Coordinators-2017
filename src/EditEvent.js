@@ -10,11 +10,13 @@ export default class EditEvent extends Component {
         key: 'id',
         name: 'ID',
         width: 80,
+        forSingle: true,
       },
       {
         key: 'name',
         name: 'Name',
         editable: true,
+        forShort: true,
       },
       {
         key: 'category',
@@ -80,6 +82,11 @@ export default class EditEvent extends Component {
         key: 'rulesList',
         name: 'Rules',
         editable: true,
+      },
+      {
+        key: 'registrations',
+        name: 'Registrations',
+        editable: false
       }
     ]
   }
@@ -87,7 +94,8 @@ export default class EditEvent extends Component {
 
   render() {
     return (
-      <Editor updateUrl={prefix + '/v1/event/update'} createUrl={prefix + '/v1/event/create'} columns={this.getColumns()} getUrl={prefix + '/v1/events'} />
+      <Editor updateUrl={prefix + '/v1/event/update'} createUrl={prefix + '/v1/event/create'}
+          columns={this.getColumns()} getAllUrl={prefix + '/v1/events'} getUrl={prefix + '/v1/event/'} />
     )
   }
 }

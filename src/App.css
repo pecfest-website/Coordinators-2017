@@ -27,10 +27,6 @@
   to { transform: rotate(360deg); }
 }
 
-.table-row {
-  display: table-row;
-}
-
 .table-cell > input {
   padding: 0.3em;
 }
@@ -43,4 +39,31 @@
 .table-header {
   display: table-header-group;
   background-color: 'lightred';
+}
+
+.Login {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.Login-form {
+  display: block;
+  margin: auto;
+  text-align: left;
+}
+
+.Login-element, .Login-submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+label {
+  margin-right: 10px;
+}
+
+.Editors-links {
+  margin-top: 1em;
 }

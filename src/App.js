@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+import Registrations from './Registrations';
 import './App.css';
 
 import EditEvent from './EditEvent';
@@ -53,11 +54,17 @@ class Login extends Component {
     return (
       <div className="Login">
         <form className="Login-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="userId">User ID</label>
-          <input type="text" name="userId" onChange={this.handleChange.bind(this, "userId")} />
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" onChange={this.handleChange.bind(this, 'password')} />
-          <input type="submit" value={this.state.status} disabled={this.state.status != 'Login'} />
+          <div className="Login-element">
+            <label htmlFor="userId">User ID</label>
+            <input type="text" name="userId" onChange={this.handleChange.bind(this, "userId")} />
+          </div>
+          <div className="Login-element">
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" onChange={this.handleChange.bind(this, 'password')} />
+          </div>
+          <div className="Login-submit">
+            <input type="submit" value={this.state.status} disabled={this.state.status != 'Login'} />
+          </div>
         </form>
       </div>
     )
@@ -80,12 +87,17 @@ export default class App extends Component {
           this.state.loggedIn ?
             <BrowserRouter>
               <div className="Editors">
-                <Link to="/users">Users</Link>
-                &nbsp;|&nbsp;
-                <Link to="/events">Events</Link>
+                <div className="Editors-links">
+                  <Link to="/users">Users</Link>
+                  &nbsp;|&nbsp;
+                  <Link to="/events">Events</Link>
+                  &nbsp;|&nbsp;
+                  <Link to="/registrations">Registrations</Link>
+                </div>
                 <br />
                 <Route path="/events" exact component={EditEvent} />
                 <Route path="/users" exact component={UserEditor} />
+                <Route path="/registrations" exact component={Registrations} />
               </div>
             </BrowserRouter>
             : <Login onLogin={this.handleLogin} />
